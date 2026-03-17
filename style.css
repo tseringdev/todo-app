@@ -1,0 +1,373 @@
+/* ==========================================================================
+   Modern Todo App – Clean, Responsive & Modern Design
+   ========================================================================== */
+
+:root {
+      --bg: #0a0a12;
+      --card: #11151f;
+      --text: #e5e7eb;
+      --text-muted: #9ca3af;
+      --primary: #6366f1;
+      --primary-dark: #4f46e5;
+      --danger: #ef4444;
+      --success: #10b981;
+      --warning: #f59e0b;
+      --border: #1e293b;
+      --shadow: 0 10px 25px -5px rgba(0,0,0,0.35);
+      --radius: 16px;
+      --radius-sm: 12px;
+    }
+
+    [data-theme="light"] {
+      --bg: #f8fafc;
+      --card: #ffffff;
+      --text: #0f172a;
+      --text-muted: #64748b;
+      --border: #e2e8f0;
+      --shadow: 0 10px 25px -5px rgba(0,0,0,0.1);
+    }
+
+    /* ==========================================================================
+   Base & Reset
+   ========================================================================== */
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: system-ui, -apple-system, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      min-height: 100dvh;
+      padding: 1rem;
+      line-height: 1.5;
+    }
+
+    /* ==========================================================================
+   Layout
+   ========================================================================== */
+
+    .app-container {
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    /* ==========================================================================
+   Sidebar Components
+   ========================================================================== */
+
+    .sidebar {
+      background: var(--card);
+      border-radius: var(--radius);
+      padding: 1.25rem;
+      border: 1px solid var(--border);
+      box-shadow: var(--shadow);
+      position: relative;
+    }
+
+    .sidebar-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 1.5rem;
+    }
+
+    .sidebar h1 {
+      font-size: 1.6rem;
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+    }
+
+    #themeToggle {
+      background: none;
+      border: none;
+      color: var(--text-muted);
+      font-size: 1.4rem;
+      cursor: pointer;
+      padding: 0.5rem;
+      border-radius: 8px;
+    }
+
+    #themeToggle:hover { background: rgba(255,255,255,0.08); }
+
+    .categories > div {
+      padding: 0.85rem 1rem;
+      margin: 0.4rem 0;
+      border-radius: 10px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      cursor: pointer;
+      transition: 0.18s;
+    }
+
+    .categories > div:hover { background: rgba(255,255,255,0.06); }
+
+    .health   { background: rgba(59,130,246,0.12); color: #60a5fa; }
+    .work     { background: rgba(249,115,22,0.12); color: #fb923c; }
+    .mental   { background: rgba(168,85,247,0.12); color: #a78bfa; }
+    .others   { background: rgba(107,114,128,0.12); color: #9ca3af; }
+
+    .filters {
+      margin-top: 1.5rem;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+    }
+
+    .filter-btn {
+      padding: 0.7rem 1.1rem;
+      background: transparent;
+      border: none;
+      color: var(--text-muted);
+      border-radius: 10px;
+      cursor: pointer;
+      font-weight: 500;
+      flex: 1;
+      min-width: 80px;
+      text-align: center;
+    }
+
+    .filter-btn.active,
+    .filter-btn:hover {
+      background: var(--primary);
+      color: white;
+    }
+
+    /* ==========================================================================
+   Main Content
+   ========================================================================== */
+
+    .main-content header h2 {
+      font-size: 1.8rem;
+      margin-bottom: 1.25rem;
+    }
+
+    .task-input-container {
+      background: var(--card);
+      padding: 1.25rem;
+      border-radius: var(--radius);
+      border: 1px solid var(--border);
+      box-shadow: var(--shadow);
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    .input-group {
+      display: flex;
+      flex-direction: column;
+      gap: 0.9rem;
+    }
+
+    input, select {
+      padding: 0.95rem 1.15rem;
+      border: 1px solid var(--border);
+      border-radius: var(--radius-sm);
+      background: rgba(255,255,255,0.03);
+      color: var(--text);
+      font-size: 1.05rem;
+    }
+
+    input:focus, select:focus {
+      outline: none;
+      border-color: var(--primary);
+      box-shadow: 0 0 0 3px rgba(99,102,241,0.2);
+    }
+
+    input::placeholder { color: var(--text-muted); opacity: 0.7; }
+
+    #addTaskBtn {
+      padding: 0.95rem;
+      background: var(--primary);
+      color: white;
+      border: none;
+      border-radius: var(--radius-sm);
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.2s;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+    }
+
+    #addTaskBtn:hover {
+      background: var(--primary-dark);
+      transform: translateY(-1px);
+    }
+
+    .task-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0.9rem;
+    }
+
+    .task-item {
+      background: var(--card);
+      padding: 1.1rem 1.3rem;
+      border-radius: var(--radius-sm);
+      border: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      position: relative;
+      min-height: 58px;
+      flex-wrap: wrap;
+      transition: all 0.18s;
+    }
+
+    .task-item:hover { transform: translateY(-1px); }
+
+    .task-item::before {
+      content: "";
+      position: absolute;
+      left: 0; top: 0; bottom: 0;
+      width: 5px;
+      border-radius: 5px 0 0 5px;
+    }
+
+    .priority-high::before   { background: var(--danger); }
+    .priority-medium::before { background: var(--warning); }
+    .priority-low::before    { background: var(--success); }
+
+    .task-item.completed {
+      opacity: 0.75;
+      text-decoration: line-through;
+    }
+
+    input[type="checkbox"] {
+      width: 1.3rem;
+      height: 1.3rem;
+      accent-color: var(--primary);
+    }
+
+    .task-text {
+      flex: 1 1 100%;
+      font-size: 1.05rem;
+      font-weight: 500;
+      min-width: 0;
+    }
+
+    .category-tag {
+      font-size: 0.82rem;
+      padding: 0.3rem 0.75rem;
+      border-radius: 999px;
+      background: rgba(255,255,255,0.08);
+      white-space: nowrap;
+    }
+
+    .due-date {
+      font-size: 0.88rem;
+      color: var(--text-muted);
+      white-space: nowrap;
+    }
+
+    .task-actions {
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+      margin-left: auto;
+    }
+
+    .task-actions button {
+      background: none;
+      border: none;
+      color: var(--text-muted);
+      font-size: 1.35rem;
+      cursor: pointer;
+      padding: 0.5rem;
+      border-radius: 8px;
+      transition: all 0.2s;
+      min-width: 44px;
+      min-height: 44px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .task-actions button:hover {
+      color: var(--danger);
+      background: rgba(239,68,68,0.12);
+    }
+
+    /* ==========================================================================
+   Empty State
+   ========================================================================== */
+
+    .empty-state {
+      text-align: center;
+      padding: 6rem 1rem;
+      color: var(--text-muted);
+    }
+
+    .empty-state i {
+      font-size: 4.5rem;
+      opacity: 0.35;
+      margin-bottom: 1.25rem;
+    }
+
+    .hidden { display: none !important; }
+
+   /* ==========================================================================
+   Responsive Design
+   ========================================================================== */
+   
+    @media (min-width: 768px) {
+      .app-container {
+        flex-direction: row;
+        gap: 2rem;
+      }
+
+      .sidebar {
+        width: 280px;
+        position: sticky;
+        top: 1.5rem;
+        height: fit-content;
+      }
+
+      .input-group {
+        flex-direction: row;
+        flex-wrap: wrap;
+      }
+
+      input, select {
+        flex: 1;
+        min-width: 140px;
+      }
+
+      #addTaskBtn {
+        flex: 0 0 auto;
+        min-width: 110px;
+      }
+
+      .task-item {
+        flex-wrap: nowrap;
+      }
+
+      .task-text {
+        flex: 1 1 auto;
+      }
+
+      .filters {
+        flex-direction: column;
+        gap: 0.6rem;
+      }
+
+      .filter-btn {
+        text-align: left;
+      }
+    }
+
+    @media (min-width: 1024px) {
+      .sidebar { width: 320px; }
+      .app-container { max-width: 1400px; }
+    }

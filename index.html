@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Modern Todo • 2026</title>
+
+  <!-- Font Awesome CDN -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+
+  <!-- Our styles -->
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+  <div class="app-container">
+
+    <!-- Sidebar -->
+    <aside class="sidebar">
+      <div class="sidebar-header">
+        <h1>
+          <i class="fa-solid fa-list-check"></i> 
+          Todo</h1>
+        <button id="themeToggle" aria-label="Toggle theme">
+          <i class="fa-solid fa-moon"></i>
+        </button>
+      </div>
+
+      <div class="categories">
+        <div class="category health" data-category="health">
+          <i class="fa-solid fa-heart"></i> Health <span>0</span>
+        </div>
+        <div class="category work" data-category="work">
+          <i class="fa-solid fa-briefcase"></i> Work <span>0</span>
+        </div>
+        <div class="category mental" data-category="mental">
+          <i class="fa-solid fa-brain"></i> Mental <span>0</span>
+        </div>
+        <div class="category others" data-category="others">
+          <i class="fa-solid fa-folder"></i> Others <span>0</span>
+        </div>
+      </div>
+
+      <div class="filters">
+        <button class="filter-btn active" data-filter="all">All</button>
+        <button class="filter-btn" data-filter="active">Active</button>
+        <button class="filter-btn" data-filter="completed">Done</button>
+      </div>
+    </aside>
+
+    <!-- Main content -->
+    <main class="main-content">
+      <header>
+        <h2>Tasks <span id="currentDate"></span></h2>
+      </header>
+
+      <div class="task-input-container">
+        <div class="input-group">
+          <input type="text" id="newTask" placeholder="What needs to be done?" autocomplete="off" autofocus />
+          <select id="taskCategory">
+            <option value="health">Health</option>
+            <option value="work">Work</option>
+            <option value="mental">Mental</option>
+            <option value="others">Others</option>
+          </select>
+          <select id="taskPriority">
+            <option value="medium">Medium</option>
+            <option value="high">High</option>
+            <option value="low">Low</option>
+          </select>
+          <input type="date" id="taskDueDate" />
+        </div>
+        <button id="addTaskBtn"><i class="fa-solid fa-plus"></i> Add</button>
+      </div>
+
+      <ul id="taskList" class="task-list"></ul>
+
+      <div id="emptyState" class="empty-state hidden">
+        <i class="fa-solid fa-list-check fa-3x"></i>
+        <h3>All clear!</h3>
+        <p>You're all caught up. Add a task to get started.</p>
+      </div>
+    </main>
+  </div>
+
+  
+
+<!-- Our JavaScript -->
+  <script src="script.js"></script>
+</body>
+</html>
